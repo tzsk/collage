@@ -128,6 +128,8 @@ For **`Three Image`**: You have 4 Options in the `$layout` object.
 - `$layout->oneTopTwoBottom()`: Two images on the bottom, side by side. One wide image at the top.
 - `$layout->twoLeftOneRight()`: Two images on the left, one below the other. One tall image at the right.
 - `$layout->oneLeftTwoRight()`: Two images on the right, one below the other. One tall image at the left.
+- `$layout->horizontal()`: Aligns the images horizontally.
+- `$layout->vertical()`: Aligns the images vertically
    
 Example:
 
@@ -138,7 +140,11 @@ $collage = Collage::make(400, 400)
     });
 ```
 
-For **`Four Image`**: You don't really need to specify the Closure at all. It will come as a grid.
+For **`Four Image`**: You have 3 Options in the `$layout` object. Default is Grid.
+
+- `$layout->grid()`: Default, Aligns in a grid.
+- `$layout->horizontal()`: Aligns the images horizontally.
+- `$layout->vertical()`: Aligns the images vertically
 
 **Return Value:**
 

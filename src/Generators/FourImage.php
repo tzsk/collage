@@ -75,7 +75,7 @@ class FourImage extends CollageGenerator
     /**
      * Process all images.
      */
-    protected function process()
+    public function grid()
     {
         list($width, $height) = $this->getSmallSize();
 
@@ -100,7 +100,7 @@ class FourImage extends CollageGenerator
         if ($closure) {
             call_user_func($closure, $this);
         } else {
-            $this->process();
+            $this->grid();
         }
     }
 

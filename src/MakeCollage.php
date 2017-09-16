@@ -93,7 +93,7 @@ class MakeCollage
     {
         $count = count($this->file->getFiles());
 
-        if (! $this->config->hasGeneratorFor($count)) {
+        if (!$this->config->hasGeneratorFor($count)) {
             throw new Exception("Maximum " . $count . " Images are allowed");
         }
 

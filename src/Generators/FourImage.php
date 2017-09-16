@@ -24,10 +24,52 @@ class FourImage extends CollageGenerator
 
         $this->canvas = Image::canvas($width, $height);
 
-        $this->process();
+        $this->makeSelection($closure);
 
         return Image::canvas($this->file->getWidth(), $this->file->getHeight(), $this->file->getColor())
                     ->insert($this->canvas, 'center');
+    }
+
+    /**
+     * Align Image Horizontally.
+     */
+    public function horizontal()
+    {
+        $width = $this->file->getWidth() - $this->file->getPadding();
+        $height = $this->file->getHeight() / 4 - $this->file->getPadding() * 0.75;
+
+        $one = $this->images->get(0);
+        $this->canvas->insert($one->fit($width, floor($height)), 'top');
+
+        $two = $this->images->get(1);
+        $this->canvas->insert($two->fit($width, floor($height)), 'top', 0, $this->file->getHeight() / 4);
+
+        $three = $this->images->get(2);
+        $this->canvas->insert($three->fit($width, floor($height)), 'top', 0, $this->file->getHeight() / 2);
+
+        $four = $this->images->get(3);
+        $this->canvas->insert($four->fit($width, floor($height)), 'bottom');
+    }
+
+    /**
+     * Align Image Vertically.
+     */
+    public function vertical()
+    {
+        $width = $this->file->getWidth() / 4 - $this->file->getPadding() * 0.75;
+        $height = $this->file->getHeight() - $this->file->getPadding();
+
+        $one = $this->images->get(0);
+        $this->canvas->insert($one->fit(floor($width), $height), 'left');
+
+        $two = $this->images->get(1);
+        $this->canvas->insert($two->fit(floor($width), $height), 'left', $this->file->getWidth() / 4);
+
+        $three = $this->images->get(2);
+        $this->canvas->insert($three->fit(floor($width), $height), 'left', $this->file->getWidth() / 2);
+
+        $four = $this->images->get(3);
+        $this->canvas->insert($four->fit(floor($width), $height), 'right');
     }
 
     /**
@@ -46,8 +88,20 @@ class FourImage extends CollageGenerator
         $three = $this->images->get(2);
         $this->canvas->insert($three->fit($width, $height), 'bottom-left');
 
-        $three = $this->images->get(3);
-        $this->canvas->insert($three->fit($width, $height), 'bottom-right');
+        $four = $this->images->get(3);
+        $this->canvas->insert($four->fit($width, $height), 'bottom-right');
+    }
+
+    /**
+     * @param Closure $closure
+     */
+    protected function makeSelection($closure = null)
+    {
+        if ($closure) {
+            call_user_func($closure, $this);
+        } else {
+            $this->process();
+        }
     }
 
     /**

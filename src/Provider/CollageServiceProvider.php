@@ -17,13 +17,13 @@ class CollageServiceProvider extends ServiceProvider
          * Publish Config File.
          */
         $this->publishes([
-            __DIR__.'/../Config/collage.php' => config_path('collage.php')
+            __DIR__ . '/../Config/collage.php' => config_path('collage.php')
         ], 'config');
 
         /**
          * Register singleton.
          */
-        $this->app->singleton('tzsk-collage', function ($app) {
+        $this->app->singleton('tzsk-collage', function($app) {
             return $app->make(MakeCollage::class);
         });
     }
@@ -37,7 +37,7 @@ class CollageServiceProvider extends ServiceProvider
     {
         // merge default config
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/collage.php',
+            __DIR__ . '/../Config/collage.php',
             'collage'
         );
     }

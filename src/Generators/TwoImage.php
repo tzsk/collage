@@ -7,24 +7,24 @@ use Tzsk\Collage\Contracts\CollageGenerator;
 
 class TwoImage extends CollageGenerator
 {
-	/**
-	 * @var Image
-	 */
-	protected $canvas;
-
-	/**
-	 * @param Closure $closure
-	 *
-	 * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
+    /**
+     * @var Image
      */
-	public function create( $closure = null )
-	{
-		$this->createCanvas();
-		$this->makeSelection($closure);
+    protected $canvas;
 
-		return Image::canvas($this->file->getWidth(), $this->file->getHeight(), $this->file->getColor())
-		            ->insert($this->canvas, 'center');
-	}
+    /**
+     * @param Closure $closure
+     *
+     * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
+     */
+    public function create($closure = null)
+    {
+        $this->createCanvas();
+        $this->makeSelection($closure);
+
+        return Image::canvas($this->file->getWidth(), $this->file->getHeight(), $this->file->getColor())
+                    ->insert($this->canvas, 'center');
+    }
 
     /**
      * Create inner canvas.
@@ -35,68 +35,68 @@ class TwoImage extends CollageGenerator
         $width = $this->file->getWidth() - $this->file->getPadding();
 
         $this->canvas = Image::canvas($width, $height);
-	}
+    }
 
-	/**
-	 * Process Vertical
-	 */
-	public function vertical()
-	{
-		$this->resizeVerticalImages();
+    /**
+     * Process Vertical
+     */
+    public function vertical()
+    {
+        $this->resizeVerticalImages();
 
-		$this->canvas->insert($this->images->get(0));
-		$this->canvas->insert($this->images->get(1), 'top-right');
-	}
+        $this->canvas->insert($this->images->get(0));
+        $this->canvas->insert($this->images->get(1), 'top-right');
+    }
 
-	/**
-	 * Process Horizontal.
-	 */
-	public function horizontal()
-	{
-		$this->resizeHorizontalImages();
+    /**
+     * Process Horizontal.
+     */
+    public function horizontal()
+    {
+        $this->resizeHorizontalImages();
 
-		$this->canvas->insert($this->images->get(0));
-		$this->canvas->insert($this->images->get(1), 'bottom-left');
-	}
+        $this->canvas->insert($this->images->get(0));
+        $this->canvas->insert($this->images->get(1), 'bottom-left');
+    }
 
-	/**
-	 * @param Closure $closure
-	 */
-	protected function makeSelection( $closure = null )
-	{
-		if ($closure) {
-			call_user_func($closure, $this);
-		} else {
-			$this->horizontal();
-		}
-	}
+    /**
+     * @param Closure $closure
+     */
+    protected function makeSelection($closure = null)
+    {
+        if ($closure) {
+            call_user_func($closure, $this);
+        } else {
+            $this->horizontal();
+        }
+    }
 
-	/**
-	 * Resize Images for Horizontal Use.
-	 */
-	protected function resizeHorizontalImages()
-	{
-		$height = $this->file->getHeight() / 2 - ceil($this->file->getPadding() * 0.75);
+    /**
+     * Resize Images for Horizontal Use.
+     */
+    protected function resizeHorizontalImages()
+    {
+        $height = $this->file->getHeight() / 2 - ceil($this->file->getPadding() * 0.75);
 
-		$images = collect();
-		foreach ( $this->images as $image ) {
-			$images->push($image->fit($this->file->getWidth() - $this->file->getPadding(), $height));
-		}
+        $images = collect();
+        foreach ($this->images as $image) {
+            $images->push($image->fit($this->file->getWidth() - $this->file->getPadding(), $height));
+        }
 
-		$this->images = $images;
-	}
+        $this->images = $images;
+    }
 
-	/**
-	 * Resize Images for Vertical Use.
-	 */
-	protected function resizeVerticalImages()
-	{
-		$width = $this->file->getWidth() / 2 - ceil($this->file->getPadding() * 0.75);
-		$images = collect();
-		foreach ( $this->images as $image ) {
-			$images->push($image->fit($width, $this->file->getHeight() - $this->file->getPadding()));
-		}
+    /**
+     * Resize Images for Vertical Use.
+     */
+    protected function resizeVerticalImages()
+    {
+        $width = $this->file->getWidth() / 2 - ceil($this->file->getPadding() * 0.75);
+        $images = collect();
+        foreach ($this->images as $image) {
+            $images->push($image->fit($width, $this->file->getHeight() - $this->file->getPadding()));
+        }
 
-		$this->images = $images;
-	}
+        $this->images = $images;
+    }
 }

@@ -8,20 +8,20 @@ use Tzsk\Collage\Generators\TwoImage;
 
 class Config
 {
-	/**
-	 * @var array
-	 */
-	protected $classMap = [
-		1 => OneImage::class,
-		2 => TwoImage::class,
-		3 => ThreeImage::class,
-		4 => FourImage::class,
-	];
+    /**
+     * @var array
+     */
+    protected $classMap = [
+        1 => OneImage::class,
+        2 => TwoImage::class,
+        3 => ThreeImage::class,
+        4 => FourImage::class,
+    ];
 
     /**
      * @var string
      */
-	protected $driver;
+    protected $driver;
 
     /**
      * Config constructor.
@@ -29,46 +29,47 @@ class Config
     public function __construct()
     {
         $this->driver = config('collage.driver');
-	}
+    }
 
-	/**
-	 * @param array $classMap
-	 *
-	 * @return Config
-	 */
-	public function setClassMap( $classMap )
-	{
-		$this->classMap = array_merge($this->classMap, $classMap);
+    /**
+     * @param array $classMap
+     *
+     * @return Config
+     */
+    public function setClassMap($classMap)
+    {
+        $this->classMap = array_merge($this->classMap, $classMap);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @return array
-	 */
-	public function getClassMap() {
-		return $this->classMap;
-	}
+    /**
+     * @return array
+     */
+    public function getClassMap()
+    {
+        return $this->classMap;
+    }
 
-	/**
-	 * @param mixed $count
-	 *
-	 * @return bool
-	 */
-	public function hasGeneratorFor( $count )
-	{
-		return isset($this->classMap[$count]);
-	}
+    /**
+     * @param mixed $count
+     *
+     * @return bool
+     */
+    public function hasGeneratorFor($count)
+    {
+        return isset($this->classMap[$count]);
+    }
 
-	/**
-	 * @param mixed $index
-	 *
-	 * @return mixed
-	 */
-	public function getGenerator( $index )
-	{
-		return $this->classMap[$index];
-	}
+    /**
+     * @param mixed $index
+     *
+     * @return mixed
+     */
+    public function getGenerator($index)
+    {
+        return $this->classMap[$index];
+    }
 
     /**
      * @param string $driver

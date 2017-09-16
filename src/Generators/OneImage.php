@@ -7,22 +7,22 @@ use Tzsk\Collage\Contracts\CollageGenerator;
 
 class OneImage extends CollageGenerator
 {
-	/**
-	 * @var Image
-	 */
-	protected $canvas;
+    /**
+     * @var Image
+     */
+    protected $canvas;
 
-	/**
-	 * @param Closure $closure
-	 *
-	 * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
-	 */
-	public function create( $closure = null )
-	{
-		$this->createCanvas();
-		$this->process();
-		return $this->canvas->insert($this->images->first(), 'center');
-	}
+    /**
+     * @param Closure $closure
+     *
+     * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
+     */
+    public function create($closure = null)
+    {
+        $this->createCanvas();
+        $this->process();
+        return $this->canvas->insert($this->images->first(), 'center');
+    }
 
     /**
      * Create the Outer canvas.
@@ -34,17 +34,16 @@ class OneImage extends CollageGenerator
         $color = $this->file->getColor();
 
         $this->canvas = Image::canvas($width, $height, $color);
-	}
+    }
 
-	/**
-	 * Process Image.
-	 */
-	protected function process()
-	{
-		$width = $this->file->getWidth() - $this->file->getPadding();
-		$height = $this->file->getHeight() - $this->file->getPadding();
+    /**
+     * Process Image.
+     */
+    protected function process()
+    {
+        $width = $this->file->getWidth() - $this->file->getPadding();
+        $height = $this->file->getHeight() - $this->file->getPadding();
 
-		$this->images = collect([$this->images->first()->fit($width, $height)]);
-	}
-
+        $this->images = collect([$this->images->first()->fit($width, $height)]);
+    }
 }

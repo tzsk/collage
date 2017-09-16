@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Facade;
  */
 class Collage extends Facade
 {
-	/**
-	 * Get the registered name of the component.
-	 *
-	 * @return string
-	 */
-	public static function getFacadeAccessor() {
-		return 'tzsk-collage';
-	}
-
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    public static function getFacadeAccessor()
+    {
+        return 'tzsk-collage';
+    }
 }

@@ -9,15 +9,15 @@ use Tzsk\Collage\Helpers\File;
 
 abstract class CollageGenerator
 {
-	/**
-	 * @var File
-	 */
-	protected $file;
+    /**
+     * @var File
+     */
+    protected $file;
 
-	/**
-	 * @var Collection
-	 */
-	protected $images;
+    /**
+     * @var Collection
+     */
+    protected $images;
 
     /**
      * CollageGenerator constructor.
@@ -25,37 +25,37 @@ abstract class CollageGenerator
      * @param File $file
      * @param Config $config
      */
-	public function __construct( File $file, Config $config )
-	{
-		$this->file = $file;
+    public function __construct(File $file, Config $config)
+    {
+        $this->file = $file;
         Image::configure(['driver' => $config->getDriver()]);
-		$this->transformFiles();
-	}
+        $this->transformFiles();
+    }
 
-	/**
-	 * @param Closure $closure
-	 *
-	 * @return Image
-	 */
-	public function create($closure = null)
-	{
-		//
-	}
+    /**
+     * @param Closure $closure
+     *
+     * @return Image
+     */
+    public function create($closure = null)
+    {
+        //
+    }
 
-	/**
-	 * Set file transformations.
-	 */
-	protected function transformFiles()
-	{
-		$images = collect();
-		foreach ( $this->file->getFiles() as $file ) {
-			if ($file instanceof Image) {
-				$images->push($file);
-			} else {
-				$images->push(Image::make($file));
-			}
-		}
+    /**
+     * Set file transformations.
+     */
+    protected function transformFiles()
+    {
+        $images = collect();
+        foreach ($this->file->getFiles() as $file) {
+            if ($file instanceof Image) {
+                $images->push($file);
+            } else {
+                $images->push(Image::make($file));
+            }
+        }
 
-		$this->images = $images;
-	}
+        $this->images = $images;
+    }
 }

@@ -5,6 +5,7 @@
 [![StyleCI](https://styleci.io/repos/103735431/shield?branch=master)](https://styleci.io/repos/103735431)
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Build Status](https://scrutinizer-ci.com/g/tzsk/collage/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/collage/build-status/master)
+[![Dependency Status](https://www.versioneye.com/user/projects/59bcdda16725bd0036cc6616/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/59bcdda16725bd0036cc6616)
 [![Total Downloads][ico-downloads]][link-downloads]
 
 Create Image Collage with ease now with Laravel 5. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.

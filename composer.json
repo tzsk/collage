@@ -47,6 +47,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Tzsk\\Collage\\Provider\\CollageServiceProvider"
+            ],
+            "aliases": {
+                "Collage": "Tzsk\\Collage\\Facade\\Collage"
+            }
         }
     },
     "config": {

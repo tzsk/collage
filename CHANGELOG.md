@@ -7,7 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## NEXT - Very Soon...
 
 ### Added
-- Nothing
+- AutoDiscovery Support for Laravel 5.5 and above
 
 ### Deprecated
 - Nothing

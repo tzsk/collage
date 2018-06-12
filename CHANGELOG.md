@@ -13,7 +13,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 ### Fixed
-- Nothing
+- Maximum Allowed Images Count
+- Code Styling
 
 ### Removed
 - Nothing

@@ -1,9 +1,10 @@
 <?php
+
 namespace Tzsk\Collage\Generators;
 
 use Closure;
-use Intervention\Image\ImageManagerStatic as Image;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ThreeImage extends CollageGenerator
 {
@@ -26,8 +27,11 @@ class ThreeImage extends CollageGenerator
 
         $this->makeSelection($closure);
 
-        return Image::canvas($this->file->getWidth(), $this->file->getHeight(), $this->file->getColor())
-                    ->insert($this->canvas, 'center');
+        return Image::canvas(
+            $this->file->getWidth(),
+            $this->file->getHeight(),
+            $this->file->getColor()
+        )->insert($this->canvas, 'center');
     }
 
     /**
@@ -173,7 +177,7 @@ class ThreeImage extends CollageGenerator
      */
     protected function getSmallSize()
     {
-        $width  = $this->file->getWidth() / 2 - ceil($this->file->getPadding() * 0.75);
+        $width = $this->file->getWidth() / 2 - ceil($this->file->getPadding() * 0.75);
         $height = $this->file->getHeight() / 2 - ceil($this->file->getPadding() * 0.75);
 
         return [$width, $height];

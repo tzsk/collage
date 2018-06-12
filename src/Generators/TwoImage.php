@@ -1,9 +1,10 @@
 <?php
+
 namespace Tzsk\Collage\Generators;
 
 use Closure;
-use Intervention\Image\ImageManagerStatic as Image;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class TwoImage extends CollageGenerator
 {
@@ -22,8 +23,11 @@ class TwoImage extends CollageGenerator
         $this->createCanvas();
         $this->makeSelection($closure);
 
-        return Image::canvas($this->file->getWidth(), $this->file->getHeight(), $this->file->getColor())
-                    ->insert($this->canvas, 'center');
+        return Image::canvas(
+            $this->file->getWidth(),
+            $this->file->getHeight(),
+            $this->file->getColor()
+        )->insert($this->canvas, 'center');
     }
 
     /**

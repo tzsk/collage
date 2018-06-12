@@ -1,8 +1,9 @@
 <?php
+
 namespace Tzsk\Collage\Provider;
 
-use Illuminate\Support\ServiceProvider;
 use Tzsk\Collage\MakeCollage;
+use Illuminate\Support\ServiceProvider;
 
 class CollageServiceProvider extends ServiceProvider
 {

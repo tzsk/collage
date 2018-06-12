@@ -1,11 +1,12 @@
 <?php
+
 namespace Tzsk\Collage\Contracts;
 
 use Closure;
+use Tzsk\Collage\Helpers\File;
+use Tzsk\Collage\Helpers\Config;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManagerStatic as Image;
-use Tzsk\Collage\Helpers\Config;
-use Tzsk\Collage\Helpers\File;
 
 abstract class CollageGenerator
 {
@@ -37,10 +38,7 @@ abstract class CollageGenerator
      *
      * @return Image
      */
-    public function create($closure = null)
-    {
-        //
-    }
+    abstract public function create($closure = null);
 
     /**
      * Set file transformations.

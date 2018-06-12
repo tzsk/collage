@@ -1,10 +1,11 @@
 <?php
+
 namespace Tzsk\Collage;
 
 use Closure;
 use Exception;
-use Tzsk\Collage\Helpers\Config;
 use Tzsk\Collage\Helpers\File;
+use Tzsk\Collage\Helpers\Config;
 
 class MakeCollage
 {
@@ -94,7 +95,7 @@ class MakeCollage
         $count = count($this->file->getFiles());
 
         if (! $this->config->hasGeneratorFor($count)) {
-            throw new Exception("Maximum " . $count . " Images are allowed");
+            throw new Exception('Maximum '.$this->config->getGeneratorCount().' Images are allowed');
         }
 
         $class = $this->config->getGenerator($count);

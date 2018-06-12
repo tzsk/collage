@@ -1,9 +1,10 @@
 <?php
+
 namespace Tzsk\Collage\Generators;
 
 use Closure;
-use Intervention\Image\ImageManagerStatic as Image;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class OneImage extends CollageGenerator
 {

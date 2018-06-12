@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Collage\Facade;
 
 use Illuminate\Support\Facades\Facade;

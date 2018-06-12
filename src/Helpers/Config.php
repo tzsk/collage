@@ -1,10 +1,11 @@
 <?php
+
 namespace Tzsk\Collage\Helpers;
 
-use Tzsk\Collage\Generators\FourImage;
 use Tzsk\Collage\Generators\OneImage;
-use Tzsk\Collage\Generators\ThreeImage;
 use Tzsk\Collage\Generators\TwoImage;
+use Tzsk\Collage\Generators\FourImage;
+use Tzsk\Collage\Generators\ThreeImage;
 
 class Config
 {
@@ -59,6 +60,14 @@ class Config
     public function hasGeneratorFor($count)
     {
         return isset($this->classMap[$count]);
+    }
+
+    /**
+     * @return int
+     */
+    public function getGeneratorCount()
+    {
+        return count($this->classMap);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Collage\Helpers;
 
 class File

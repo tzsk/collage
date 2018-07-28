@@ -4,10 +4,10 @@ namespace Tzsk\Collage\Tests\Contracts;
 
 use Tzsk\Collage\Helpers\File;
 use Tzsk\Collage\Helpers\Config;
-use Tzsk\Collage\Tests\TestCase;
+use Tzsk\Collage\Tests\PhpTestCase;
 use Tzsk\Collage\Contracts\CollageGenerator;
 
-class CollageGeneratorTest extends TestCase
+class CollageGeneratorTest extends PhpTestCase
 {
     public function test_it_can_create_something()
     {

@@ -3,8 +3,9 @@
 namespace Tzsk\Collage\Generators;
 
 use Closure;
+use Intervention\Image\Image;
+use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Contracts\CollageGenerator;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class OneImage extends CollageGenerator
 {
@@ -16,7 +17,7 @@ class OneImage extends CollageGenerator
     /**
      * @param Closure $closure
      *
-     * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
+     * @return \Intervention\Image\Image
      */
     public function create($closure = null)
     {
@@ -36,7 +37,7 @@ class OneImage extends CollageGenerator
         $height = $this->file->getHeight();
         $color = $this->file->getColor();
 
-        $this->canvas = Image::canvas($width, $height, $color);
+        $this->canvas = ImageManagerStatic::canvas($width, $height, $color);
     }
 
     /**

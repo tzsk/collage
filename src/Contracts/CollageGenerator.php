@@ -3,11 +3,12 @@
 namespace Tzsk\Collage\Contracts;
 
 use Closure;
+use Intervention\Image\Image;
 use Tzsk\Collage\Helpers\File;
 use Tzsk\Collage\Helpers\Config;
 use Illuminate\Support\Collection;
+use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Exceptions\ImageCountException;
-use Intervention\Image\ImageManagerStatic as Image;
 
 abstract class CollageGenerator
 {
@@ -30,7 +31,7 @@ abstract class CollageGenerator
     public function __construct(File $file, Config $config)
     {
         $this->file = $file;
-        Image::configure(['driver' => $config->getDriver()]);
+        ImageManagerStatic::configure(['driver' => $config->getDriver()]);
         $this->transformFiles();
     }
 
@@ -51,7 +52,7 @@ abstract class CollageGenerator
             if ($file instanceof Image) {
                 $images->push($file);
             } else {
-                $images->push(Image::make($file));
+                $images->push(ImageManagerStatic::make($file));
             }
         }
 

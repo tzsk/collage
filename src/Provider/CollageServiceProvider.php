@@ -25,7 +25,7 @@ class CollageServiceProvider extends ServiceProvider
          * Register singleton.
          */
         $this->app->singleton('tzsk-collage', function ($app) {
-            return $app->make(MakeCollage::class);
+            return (new MakeCollage(config('collage.driver')));
         });
     }
 

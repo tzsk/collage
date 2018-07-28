@@ -27,7 +27,7 @@ class File
     /**
      * @var array
      */
-    protected $files;
+    protected $files = [];
 
     /**
      * @param int $width

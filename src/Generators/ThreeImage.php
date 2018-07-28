@@ -20,6 +20,8 @@ class ThreeImage extends CollageGenerator
      */
     public function create($closure = null)
     {
+        $this->check(3);
+
         $height = $this->file->getHeight() - $this->file->getPadding();
         $width = $this->file->getWidth() - $this->file->getPadding();
 
@@ -54,7 +56,7 @@ class ThreeImage extends CollageGenerator
     /**
      * Two Image on Top, One on Bottom.
      */
-    public function oneTopTowBottom()
+    public function oneTopTwoBottom()
     {
         list($width, $height, $largeWidth) = $this->getWidthSize();
 

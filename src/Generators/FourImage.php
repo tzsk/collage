@@ -20,6 +20,8 @@ class FourImage extends CollageGenerator
      */
     public function create($closure = null)
     {
+        $this->check(4);
+
         $height = $this->file->getHeight() - $this->file->getPadding();
         $width = $this->file->getWidth() - $this->file->getPadding();
 

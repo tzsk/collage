@@ -21,14 +21,21 @@ class MakeCollage
 
     /**
      * Collage constructor.
-     *
-     * @param Config $config
-     * @param File $file
      */
-    public function __construct(Config $config, File $file)
+    public function __construct($driver = 'gd')
     {
-        $this->config = $config;
-        $this->file = $file;
+        $this->bootstrap($driver);
+    }
+
+    /**
+     * Bootstrap the class
+     *
+     * @return void
+     */
+    protected function bootstrap($driver)
+    {
+        $this->config = new Config($driver);
+        $this->file = new File;
     }
 
     /**

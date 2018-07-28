@@ -20,6 +20,8 @@ class TwoImage extends CollageGenerator
      */
     public function create($closure = null)
     {
+        $this->check(2);
+
         $this->createCanvas();
         $this->makeSelection($closure);
 

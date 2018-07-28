@@ -27,19 +27,21 @@ class Config
     /**
      * Config constructor.
      */
-    public function __construct()
+    public function __construct($driver = null)
     {
-        $this->driver = config('collage.driver');
+        $this->driver = $driver ?: 'gd';
     }
 
     /**
-     * @param array $classMap
+     * @param array $maps
      *
      * @return Config
      */
-    public function setClassMap($classMap)
+    public function setClassMap($maps)
     {
-        $this->classMap = array_merge($this->classMap, $classMap);
+        foreach ($maps as $key => $map) {
+            $this->classMap[$key] = $map;
+        }
 
         return $this;
     }

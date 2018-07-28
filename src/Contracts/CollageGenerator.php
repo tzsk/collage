@@ -6,6 +6,7 @@ use Closure;
 use Tzsk\Collage\Helpers\File;
 use Tzsk\Collage\Helpers\Config;
 use Illuminate\Support\Collection;
+use Tzsk\Collage\Exceptions\ImageCountException;
 use Intervention\Image\ImageManagerStatic as Image;
 
 abstract class CollageGenerator
@@ -55,5 +56,19 @@ abstract class CollageGenerator
         }
 
         $this->images = $images;
+    }
+
+    /**
+     * @param integer $count
+     * @throws ImageCountException
+     * @return void
+     */
+    protected function check($count)
+    {
+        $files = $this->images->count();
+        if ($files != $count) {
+            $message = "Cannot create collage of {$count} image with {$files} image(s)";
+            throw new ImageCountException($message);
+        }
     }
 }

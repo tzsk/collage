@@ -4,10 +4,11 @@ Contributions are **welcome** and will be fully **credited**.
 
 We accept contributions via Pull Requests on [Github](https://github.com/tzsk/collage).
 
-
 ## Pull Requests
 
 - **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - Check the code style with ``$ composer check-style`` and fix it with ``$ composer fix-style``.
+
+- **Include Tests** - Make sure sure to include tests. Any feature without test won't be accepted. Any fixes which breaks existing test results will not be excepted unless it is a major Bug.
 
 - **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
 

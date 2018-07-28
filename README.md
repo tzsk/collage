@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![StyleCI](https://styleci.io/repos/103735431/shield?branch=master)](https://styleci.io/repos/103735431)
+[![Build Status](https://travis-ci.org/tzsk/collage.svg?branch=master)](https://travis-ci.org/tzsk/collage)
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Build Status](https://scrutinizer-ci.com/g/tzsk/collage/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/collage/build-status/master)
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -21,6 +22,8 @@ $ composer require tzsk/collage
 ```
 
 ## Configure
+
+> NOTE: Ignore this step if you are using this package outside laravel. You can directly jump into using it.
 
 Then add the Service Provider and Alias in your `config/app.php` file:
 
@@ -79,7 +82,21 @@ $images = [
 Now, there are several configurations available most of them are optional. Below is the full syntax.
 
 ```php
-$collage = Collage::make(400, 400)
+$image = Collage::make(400, 400)
+    ->padding(10)
+    ->background('#f00')
+    ->from($images, function ($layout) {
+        ...
+    });
+```
+
+### Outside Laravel
+
+```php
+use Tzsk\Collage\MakeCollage;
+
+$collage = new MakeCollage();
+$image = $collage->make(400, 400)
     ->padding(10)
     ->background('#f00')
     ->from($images, function ($layout) {
@@ -152,6 +169,16 @@ For **`Four Image`**: You have 3 Options in the `$layout` object. Default is Gri
 It returns the Intervention Image Object you can `save()`, `response()` or do whatever you can do with Intervention Image.
 
 Visit: [Intervention Image Documentation](http://image.intervention.io) to know more.
+
+## Testing
+
+After Cloning the repository, install all composer dependecies by running: `composer install`.
+
+Then Run Tests:
+
+```bash
+$ composer test
+```
 
 ## Change log
 

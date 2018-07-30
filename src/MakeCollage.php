@@ -39,6 +39,17 @@ class MakeCollage
     }
 
     /**
+     * @param array $generator
+     * @return MakeCollage
+     */
+    public function with($generator)
+    {
+        $this->config->setClassMap($generator);
+
+        return $this;
+    }
+
+    /**
      * @param int $width
      * @param null|int $height
      *

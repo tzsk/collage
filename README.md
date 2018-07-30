@@ -1,4 +1,4 @@
-# collage
+# PHP Collage Maker
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -8,167 +8,332 @@
 [![Build Status](https://scrutinizer-ci.com/g/tzsk/collage/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/collage/build-status/master)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Create Image Collage with ease now with Laravel 5. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
+Create Image Collage with ease now with PHP. This also supports Laravel 5.1 or higher. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
+
 Using this package is very easy and creating Beautiful Collages are not tough anymore.
 
-**Note:** This package only supports up to 4 images right now. Will increase the compatibility as we go along.
+> *NOTE:* Currently this package only supports 4 images. You can write your own generator to add 5 if you like.
 
-## Install
+## Installation
 
-Via Composer
+This is a composer package. So just run the below composer command inside your project directory to get it installed.
 
-``` bash
-$ composer require tzsk/collage
+```bash
+composer install tzsk/collage
 ```
 
 ## Configure
 
-> NOTE: Ignore this step if you are using this package outside laravel. You can directly jump into using it.
+> If you are using this package outside laravel then you don't need to do this step.
 
-Then add the Service Provider and Alias in your `config/app.php` file:
+### config/app.php
+
+> If you are using Laravel 5.5 or higher then you don't need to add the Service Provider and the Alias, because this package supports Package Auto-Discovery.
+
+But if you are using Laravel 5.4 or below make these modifications in the app config file: `config/app.php`.
 
 ```php
+// Add in the providers array
 'providers' => [
-    ...
     Tzsk\Collage\Provider\CollageServiceProvider::class,
-    ...
 ],
-
+// Add in the aliases array
 'aliases' => [
-    ...
     'Collage' => Tzsk\Collage\Facade\Collage::class,
-    ...
 ],
 ```
 
-> **NOTE:** If you are using Laravel 5.5 or above you don't have to make the config entries as this Package supports Laravel Package AutoDiscovery.
+If you want to use any other driver besides `'gd'` then you have to publish the configuration file:
 
-Now publish the config file. Via terminal run:
-
-``` bash
-$ php artisan vendor:publish --tag=config
+```bash
+php artisan vendor:publish
 ```
 
-Inside the Config file you can change the Image Manipulation Driver to either `gd` (default) or `imagick`.
+> NOTE: For interactive publishing choose the `Tzsk\Collage\Provider\CollageServiceProvider` option.
+
+You will then have a file in your config directory: `config/collage.php`
+
+If you are using `'imagick'` then you can change it.
 
 ## Usage
 
-Use the class namespace where you want to create collage in your code. ( A controller file )
-
-``` php
-...
-use Tzsk\Collage\Facade\Collage;
-...
-```
-
-Then in the method create a `$images` array. This array can be an array of `Image` object from `intervention/image`, 
-or Stream array, or URL, or Image Path.
-
-Example:
+First you need to have a set of images to make collage of. This package can except many kinds of Targets.
 
 ```php
-$images = $request->images; # Directly from the array of upload object.
-
-# OR it can be mixed...
-
 $images = [
-    Image::make('images/some-image.jpg'),
-    'images/some-other-image.png',
-    'http://example.com/image.jpg',
-    file_get_contents('...')
+    // List of images
+    'images/some-image.jpg',
 ];
 ```
 
-Now, there are several configurations available most of them are optional. Below is the full syntax.
+There are other kinds of image targets supported:
 
 ```php
-$image = Collage::make(400, 400)
-    ->padding(10)
-    ->background('#f00')
-    ->from($images, function ($layout) {
-        ...
-    });
+$images = [
+    // 1. File Contents
+    file_get_contents('some/image/path/or/url'),
+
+    // 2. Direct URLs
+    'https://some/image/url',
+
+    // 3. Absolute & Relative Path
+    '/some/image/somewhere/on/disk',
+
+    // 4. Intervention\Image\Image Object
+    ImageManagerStatic::make('...'),
+    // It's Intervention\Image\ImageManagerStatic
+
+    // 5. Or if you are Using Laravel
+    Image::make('...'),
+    // It's Intervention\Image\Facades\Image
+];
 ```
 
-### Outside Laravel
+Depending upon the number of images in the array this package will automatically use the right Generator.
+
+### Examples Outside Laravel
+
+Firstly, use the Class Namespace at the top.
 
 ```php
 use Tzsk\Collage\MakeCollage;
 
-$collage = new MakeCollage();
-$image = $collage->make(400, 400)
-    ->padding(10)
-    ->background('#f00')
-    ->from($images, function ($layout) {
-        ...
-    });
+$collage = new MakeCollage($driver); // Default: 'gd'
 ```
 
-Before you jump in and use the package you should know about the API available in above syntax.
+> The Driver is either 'gd' or 'imagick'. Depending upon which library you are using with PHP. You can customize that. The default is `'gd'`.
 
-1. `make($width, $height)` - `$width Integer`, `$height Integer` : 
-    This is mandatory. You have to specify the Canvas width and height you want to create Collage on.
-    
-2. `padding($number)` - `$number Integer` :
-    This is Optional. used for the Padding between the Images and the Sides.
-    
-3. `background($hexCode)` - `$hexCode String` :
-    This is Optional. Used for background color.
-    
-4. `from($images, Closure $closure)` - `$images Array`, `$closure Closure (Optional)` :
-    Images array is mandatory, but the `$closure` is not. In the closure there is a $layout object is passed as an argument.
-    
-**Note:** The `$layout` object changes as the number of Images present in the `$images` array changes.
+#### Create collage with 1 Image
 
-For **`One Image`**: You don't really need to specify the Closure at all.
-
-
-
-For **`Two Image`**: You have two options in the `$layout` object.
-
-- `$layout->horizontal()`: Default, Aligns the images horizontally.
-- `$layout->vertical()`: Aligns the images vertically
-
-Example:
+Supported, yes.
 
 ```php
-$collage = Collage::make(400, 400)
-    ->from($images, function ($layout) {
-        $layout->vertical();
-    });
+$image = $collage->make(400, 400)->from($images);
+
+// Add Padding:
+$image = $collage->make(400, 400)->padding(10)->from($images);
+
+// Add Background Color:
+$image = $collage->make(400, 400)->padding(10)->background('#000')->from($images);
 ```
 
-
-
-For **`Three Image`**: You have 4 Options in the `$layout` object.
-
-- `$layout->twoTopOneBottom()`: Default, Two images on the top, side by side. One wide image at the bottom.
-- `$layout->oneTopTwoBottom()`: Two images on the bottom, side by side. One wide image at the top.
-- `$layout->twoLeftOneRight()`: Two images on the left, one below the other. One tall image at the right.
-- `$layout->oneLeftTwoRight()`: Two images on the right, one below the other. One tall image at the left.
-- `$layout->horizontal()`: Aligns the images horizontally.
-- `$layout->vertical()`: Aligns the images vertically
-   
-Example:
+#### Create collage with 2 images
 
 ```php
-$collage = Collage::make(400, 400)
-    ->from($images, function ($layout) {
-        $layout->oneLeftTwoRight();
-    });
+$image = $collage->make(400, 400)->from($images); // Default Alignment: vertical
+
+// Change Alignment:
+$image = $collage->make(400, 400)->from($images, function($alignment) {
+    $alignment->vertical(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->horizontal();
+});
 ```
 
-For **`Four Image`**: You have 3 Options in the `$layout` object. Default is Grid.
+> You can also add `padding()` and `background()` here.
 
-- `$layout->grid()`: Default, Aligns in a grid.
-- `$layout->horizontal()`: Aligns the images horizontally.
-- `$layout->vertical()`: Aligns the images vertically
+#### Create collage with 3 images
 
-**Return Value:**
+```php
+$image = $collage->make(400, 400)->from($images); // Default Alignment: twoTopOneBottom
 
-It returns the Intervention Image Object you can `save()`, `response()` or do whatever you can do with Intervention Image.
+// Change Alignment:
+$image = $collage->make(400, 400)->from($images, function($alignment) {
+    $alignment->twoTopOneBottom(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->oneTopTwoBottom();
+    // OR...
+    $alignment->oneLeftTwoRight();
+    // OR...
+    $alignment->twoLeftOneRight();
+    // OR...
+    $alignment->vertical();
+    // OR...
+    $alignment->horizontal();
+});
+```
 
-Visit: [Intervention Image Documentation](http://image.intervention.io) to know more.
+> You can also add `padding()` and `background()` here.
+
+#### Create collage with 4 images
+
+```php
+$image = $collage->make(400, 400)->from($images); // Default Alignment: grid
+
+// Change Alignment:
+$image = $collage->make(400, 400)->from($images, function($alignment) {
+    $alignment->grid(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->vertical();
+    // OR...
+    $alignment->horizontal();
+});
+```
+
+> You can also add `padding()` and `background()` here.
+
+### Examples in Laravel
+
+In laravel you already have the Alias for the Collage Maker
+
+```php
+use Tzsk\Collage\Facade\Collage;
+
+$image = Collage::make(400, 400)->from($images);
+```
+
+The rest of the Features are same as when using in normal php.
+
+#### Create collage with 1 Image
+
+```php
+$image = Collage::make(400, 400)->from($images);
+
+// Add Padding:
+$image = Collage::make(400, 400)->padding(10)->from($images);
+
+// Add Background Color:
+$image = Collage::make(400, 400)->padding(10)->background('#000')->from($images);
+```
+
+#### Create collage with 2 images
+
+```php
+$image = Collage::make(400, 400)->from($images); // Default Alignment: vertical
+
+// Change Alignment:
+$image = Collage::make(400, 400)->from($images, function($alignment) {
+    $alignment->vertical(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->horizontal();
+});
+```
+
+> You can also add `padding()` and `background()` here.
+
+#### Create collage with 3 images
+
+```php
+$image = Collage::make(400, 400)->from($images); // Default Alignment: twoTopOneBottom
+
+// Change Alignment:
+$image = Collage::make(400, 400)->from($images, function($alignment) {
+    $alignment->twoTopOneBottom(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->oneTopTwoBottom();
+    // OR...
+    $alignment->oneLeftTwoRight();
+    // OR...
+    $alignment->twoLeftOneRight();
+    // OR...
+    $alignment->vertical();
+    // OR...
+    $alignment->horizontal();
+});
+```
+
+> You can also add `padding()` and `background()` here.
+
+#### Create collage with 4 images
+
+```php
+$image = Collage::make(400, 400)->from($images); // Default Alignment: grid
+
+// Change Alignment:
+$image = Collage::make(400, 400)->from($images, function($alignment) {
+    $alignment->grid(); // Default, no need to have the Closure at all.
+    // OR...
+    $alignment->vertical();
+    // OR...
+    $alignment->horizontal();
+});
+```
+
+> You can also add `padding()` and `background()` here.
+
+## Return Value
+
+The reaturned `$image` is the instance of `Intervention\Image\Image` object.
+
+You can do multiple things with it.
+
+- You can save the final collage.
+- You can just use it as a plain response.
+- You can crop/resize/colorize and more.
+
+Read more about what you can do in the [Official Documentation](http://image.intervention.io/).
+
+## Create Custom Generators
+
+Creating a generator is very easy. Create a class that extends the abstract class: `Tzsk\Collage\Contracts\CollageGenerator`.
+
+### Example:
+
+```php
+use Tzsk\Collage\Contracts\CollageGenerator;
+
+class FiveImage extends CollageGenerator
+{
+    /**
+     * @param Closure $closure
+     * @return \Intervention\Image\Image
+     */
+    public function create($closure = null)
+    {
+        // Your code to generate the Intervention\Image\Image object
+    }
+}
+```
+
+> NOTE: Take a look at `src/Contracts/CollageGenerator.php` for details about all the things you have access to in the generator class. Also, if you need a refrerence consider looking into: `src/Generators/FourImage.php`.
+
+#### Extend outside laravel
+
+```php
+$image = $collage->with([5 => Your\Class\Namespace\FiveImage::class]);
+// Here the key is the number of file your generator accepts.
+// After this you can continue chaining methods like ->padding()->from() as usual.
+```
+
+You can also override existing generators. Let's say you want to have the FourImage generator to behave differently.
+You can make your own `MyFourImage` class and add it.
+
+```php
+$image = $collage->with([4 => Your\Class\Namespace\MyFourImage::class]);
+// It will replace the existing Generator with your own.
+// After this you can continue chaining methods like ->padding()->from() as usual.
+```
+
+#### Extend in laravel
+
+```php
+$image = Collage::with([5 => Your\Class\Namespace\FiveImage::class]);
+// Here the key is the number of file your generator accepts.
+// After this you can continue chaining methods like ->padding()->from() as usual.
+```
+
+You can also override existing generators. Let's say you want to have the FourImage generator to behave differently.
+You can make your own `MyFourImage` class and add it.
+
+```php
+$image = Collage::with([4 => Your\Class\Namespace\MyFourImage::class]);
+// It will replace the existing Generator with your own.
+// After this you can continue chaining methods like ->padding()->from() as usual.
+```
+
+You can also do this from the `config/collage.php` config file.
+
+There is a `generators` array which is currently empty. You can add your own generators there like below to Replace or add new generators.
+
+```php
+'generators' => [
+    // It will replace the current FourImage generator.
+    4 => Your\Class\Namespace\MyFourImage::class,
+
+    // It will add a new generator.
+    5 => Your\Class\Namespace\FiveImage::class,
+]
+```
 
 ## Testing
 
@@ -177,7 +342,7 @@ After Cloning the repository, install all composer dependecies by running: `comp
 Then Run Tests:
 
 ```bash
-$ composer test
+composer test
 ```
 
 ## Change log

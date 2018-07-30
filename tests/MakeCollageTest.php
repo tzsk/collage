@@ -55,6 +55,13 @@ class MakeCollageTest extends PhpTestCase
         $this->assertCount(1, $collage->getFile()->getFiles());
     }
 
+    public function test_it_can_extend_the_generators()
+    {
+        $collage = $this->collage->with([5 => 'foo']);
+        $this->assertEquals(5, $this->collage->getConfig()->getGeneratorCount());
+        $this->assertContains('foo', $this->collage->getConfig()->getClassMap());
+    }
+
     public function test_it_should_return_collage_generator()
     {
         $class = $this->collage->getConfig()->getGenerator(1);

@@ -8,7 +8,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/tzsk/collage/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/collage/build-status/master)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Create Image Collage with ease now with PHP. This also supports Laravel 5.1 or higher. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
+Create Image Collage with ease now with PHP. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
 
 Using this package is very easy and creating Beautiful Collages are not tough anymore.
 

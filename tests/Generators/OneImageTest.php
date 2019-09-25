@@ -17,7 +17,7 @@ class OneImageTest extends PhpTestCase
         'tests/images/image.jpg',
     ];
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->generator = new OneImage($this->getFile(), new Config);
     }

@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Added
 
+- Laravel 6 Support
 - AutoDiscovery Support for Laravel 5.5 and above
 - PHP Unit tests
 - Travis CI Support

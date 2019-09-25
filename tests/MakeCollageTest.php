@@ -16,7 +16,7 @@ class MakeCollageTest extends PhpTestCase
      */
     protected $collage;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->collage = new FakeMakeCollage;
     }

@@ -19,7 +19,7 @@ Using this package is very easy and creating Beautiful Collages are not tough an
 This is a composer package. So just run the below composer command inside your project directory to get it installed.
 
 ```bash
-composer install tzsk/collage
+composer require tzsk/collage
 ```
 
 ## Configure

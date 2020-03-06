@@ -6,6 +6,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## NEXT - Very Soon
 
+## 4.0.0 - 2020-03-06
+
+- Laravel 7 Support
+- Dependancy updates
+
 ### Added
 
 - Laravel 6 Support

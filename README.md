@@ -4,7 +4,7 @@
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/collage?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/collage.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/collage)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/collage/run-tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/collage/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/collage/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/collage/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/collage.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/collage)
 
 

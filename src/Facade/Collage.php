@@ -5,18 +5,11 @@ namespace Tzsk\Collage\Facade;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Collage
- *
- * @see \Tzsk\Collage\MakeCollage
+ * @see \Tzsk\Collage\Collage
  */
 class Collage extends Facade
 {
-    /**
-     * Get the registered name of the component.
-     *
-     * @return string
-     */
-    public static function getFacadeAccessor()
+    protected static function getFacadeAccessor()
     {
         return 'tzsk-collage';
     }

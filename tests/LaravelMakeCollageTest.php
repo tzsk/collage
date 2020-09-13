@@ -3,12 +3,12 @@
 namespace Tzsk\Collage\Tests;
 
 use Intervention\Image\Image;
-use Tzsk\Collage\MakeCollage;
-use Tzsk\Collage\Facade\Collage;
 use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Tzsk\Collage\Facade\Collage;
+use Tzsk\Collage\MakeCollage;
 
-class LaravelMakeCollageTest extends LaravelTestCase
+class LaravelMakeCollageTest extends TestCase
 {
     public function test_it_uses_make_collage_class()
     {
@@ -20,7 +20,7 @@ class LaravelMakeCollageTest extends LaravelTestCase
         $images = [
             ImageManagerStatic::make('tests/images/image.jpg'),
             file_get_contents('tests/images/image.jpg'),
-            'tests/images/image.jpg'
+            'tests/images/image.jpg',
         ];
 
         $this->assertInstanceOf(Image::class, Collage::make(100)->from($images));

@@ -1,6 +1,5 @@
 {
     "name": "tzsk/collage",
-    "type": "library",
     "description": "Generate Image Collage with Laravel",
     "keywords": [
         "tzsk",
@@ -14,21 +13,23 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Kazi Mainuddin Ahmed",
+            "name": "tzsk",
             "email": "mailtokmahmed@gmail.com",
             "homepage": "https://github.com/tzsk",
             "role": "Developer"
         }
     ],
     "require": {
-        "illuminate/support": "~5.7|~5.8|^6.0|^7.0",
-        "intervention/image": "~2.5",
-        "php" : "^7.2"
+        "php": "^7.4",
+        "intervention/image": "^2.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "squizlabs/php_codesniffer": "^3.0",
-        "orchestra/testbench": "~3.7|~3.8|^4.0|^5.0"
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "laravel/framework": "^7.0|^8.0",
+        "laravel/legacy-factories": "^1.0",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^3.11"
     },
     "autoload": {
         "psr-4": {
@@ -41,14 +42,15 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "laravel": {
             "providers": [
                 "Tzsk\\Collage\\Provider\\CollageServiceProvider"
@@ -58,7 +60,6 @@
             }
         }
     },
-    "config": {
-        "sort-packages": true
-    }
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

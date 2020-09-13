@@ -2,10 +2,10 @@
 
 namespace Tzsk\Collage\Helpers;
 
-use Tzsk\Collage\Generators\OneImage;
-use Tzsk\Collage\Generators\TwoImage;
 use Tzsk\Collage\Generators\FourImage;
+use Tzsk\Collage\Generators\OneImage;
 use Tzsk\Collage\Generators\ThreeImage;
+use Tzsk\Collage\Generators\TwoImage;
 
 class Config
 {
@@ -89,6 +89,7 @@ class Config
     public function setDriver($driver)
     {
         $this->driver = $driver;
+
         return $this;
     }
 

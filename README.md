@@ -1,12 +1,12 @@
-# PHP Collage Maker
+# :gift: PHP Collage Maker
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![StyleCI](https://styleci.io/repos/103735431/shield?branch=master)](https://styleci.io/repos/103735431)
-[![Build Status](https://travis-ci.org/tzsk/collage.svg?branch=master)](https://travis-ci.org/tzsk/collage)
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Build Status](https://scrutinizer-ci.com/g/tzsk/collage/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/collage/build-status/master)
-[![Total Downloads][ico-downloads]][link-downloads]
+![Collage Cover Image](resources/collage.svg)
+
+![GitHub License](https://img.shields.io/github/license/tzsk/collage?style=for-the-badge)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/collage.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/collage)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/collage/run-tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/collage/actions?query=workflow%3ATests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/tzsk/collage.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/collage)
+
 
 Create Image Collage with ease now with PHP. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
 
@@ -14,7 +14,7 @@ Using this package is very easy and creating Beautiful Collages are not tough an
 
 > *NOTE:* Currently this package only supports 4 images. You can write your own generator to add 5 if you like.
 
-## Installation
+## :package: Installation
 
 This is a composer package. So just run the below composer command inside your project directory to get it installed.
 
@@ -22,40 +22,25 @@ This is a composer package. So just run the below composer command inside your p
 composer require tzsk/collage
 ```
 
-## Configure
+## :gear: Configure
 
 > If you are using this package outside laravel then you don't need to do this step.
 
 ### config/app.php
 
-> If you are using Laravel 5.5 or higher then you don't need to add the Service Provider and the Alias, because this package supports Package Auto-Discovery.
-
-But if you are using Laravel 5.4 or below make these modifications in the app config file: `config/app.php`.
-
-```php
-// Add in the providers array
-'providers' => [
-    Tzsk\Collage\Provider\CollageServiceProvider::class,
-],
-// Add in the aliases array
-'aliases' => [
-    'Collage' => Tzsk\Collage\Facade\Collage::class,
-],
-```
+> This package supports Package Auto-Discovery. And the latest version only supports Laravel >= 7.x
 
 If you want to use any other driver besides `'gd'` then you have to publish the configuration file:
 
 ```bash
-php artisan vendor:publish
+php artisan collage:publish
 ```
-
-> NOTE: For interactive publishing choose the `Tzsk\Collage\Provider\CollageServiceProvider` option.
 
 You will then have a file in your config directory: `config/collage.php`
 
 If you are using `'imagick'` then you can change it.
 
-## Usage
+## :fire: Usage
 
 First you need to have a set of images to make collage of. This package can except many kinds of Targets.
 
@@ -91,7 +76,7 @@ $images = [
 
 Depending upon the number of images in the array this package will automatically use the right Generator.
 
-### Examples Outside Laravel
+### :globe_with_meridians: Examples Outside Laravel
 
 Firstly, use the Class Namespace at the top.
 
@@ -172,7 +157,7 @@ $image = $collage->make(400, 400)->from($images, function($alignment) {
 
 > You can also add `padding()` and `background()` here.
 
-### Examples in Laravel
+### :heart_eyes: Examples in Laravel
 
 In laravel you already have the Alias for the Collage Maker
 
@@ -251,7 +236,7 @@ $image = Collage::make(400, 400)->from($images, function($alignment) {
 
 > You can also add `padding()` and `background()` here.
 
-## Return Value
+## :trophy: Return Value
 
 The reaturned `$image` is the instance of `Intervention\Image\Image` object.
 
@@ -263,7 +248,7 @@ You can do multiple things with it.
 
 Read more about what you can do in the [Official Documentation](http://image.intervention.io/).
 
-## Create Custom Generators
+## :electric_plug: Create Custom Generators
 
 Creating a generator is very easy. Create a class that extends the abstract class: `Tzsk\Collage\Contracts\CollageGenerator`.
 
@@ -335,48 +320,29 @@ There is a `generators` array which is currently empty. You can add your own gen
 ]
 ```
 
-## Testing
+## :microscope: Testing
 
-After Cloning the repository, install all composer dependecies by running: `composer install`.
-
-Then Run Tests:
-
-```bash
+``` bash
 composer test
 ```
 
-## Change log
+## :date: Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
+## :heart: Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-## Security
+## :lock: Security
 
 If you discover any security related issues, please email mailtokmahmed@gmail.com instead of using the issue tracker.
 
-## Credits
+## :crown: Credits
 
-- [Kazi Mainuddin Ahmed][link-author]
-- [All Contributors][link-contributors]
+- [Kazi Ahmed](https://github.com/tzsk)
+- [All Contributors](../../contributors)
 
-## License
+## :policeman: License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/tzsk/collage.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/tzsk/collage/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/tzsk/collage.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/tzsk/collage.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/tzsk/collage.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/tzsk/collage
-[link-travis]: https://travis-ci.org/tzsk/collage
-[link-scrutinizer]: https://scrutinizer-ci.com/g/tzsk/collage/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/tzsk/collage
-[link-downloads]: https://packagist.org/packages/tzsk/collage
-[link-author]: https://github.com/tzsk
-[link-contributors]: ../../contributors

@@ -3,9 +3,9 @@
 namespace Tzsk\Collage\Tests\Helpers;
 
 use Tzsk\Collage\Helpers\File;
-use Tzsk\Collage\Tests\PhpTestCase;
+use Tzsk\Collage\Tests\TestCase;
 
-class FileTest extends PhpTestCase
+class FileTest extends TestCase
 {
     /**
      * @var File

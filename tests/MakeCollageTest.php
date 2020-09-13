@@ -3,13 +3,11 @@
 namespace Tzsk\Collage\Tests;
 
 use Intervention\Image\Image;
-use Tzsk\Collage\MakeCollage;
-use Tzsk\Collage\Helpers\File;
-use Tzsk\Collage\Helpers\Config;
 use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Tzsk\Collage\MakeCollage;
 
-class MakeCollageTest extends PhpTestCase
+class MakeCollageTest extends TestCase
 {
     /**
      * @var MakeCollage
@@ -18,7 +16,7 @@ class MakeCollageTest extends PhpTestCase
 
     public function setUp() : void
     {
-        $this->collage = new FakeMakeCollage;
+        $this->collage = new FakeMakeCollage();
     }
 
     public function test_it_should_have_width_and_height()
@@ -80,46 +78,11 @@ class MakeCollageTest extends PhpTestCase
     {
         $images = [
             ImageManagerStatic::make('tests/images/image.jpg'),
-            'https://tzsk.github.io/img/portfolio/thumbnails/2.jpg',
+            'https://i.picsum.photos/id/284/536/354.jpg?hmac=e8lLizGxaVIQy3ILytDAkWUwFvYLGAzDiqQU20owvHY',
             file_get_contents('tests/images/image.jpg'),
-            'tests/images/image.jpg'
+            'tests/images/image.jpg',
         ];
 
         $this->assertInstanceOf(Image::class, $this->collage->make(100)->from($images));
-    }
-}
-
-class FakeMakeCollage extends MakeCollage
-{
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * @return File
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @return Config
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
-    /**
-     * @param array $files
-     * @return MakeCollage
-     */
-    public function setFiles(array $files)
-    {
-        $this->file->setFiles($files);
-
-        return $this;
     }
 }

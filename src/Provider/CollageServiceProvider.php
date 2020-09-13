@@ -2,45 +2,32 @@
 
 namespace Tzsk\Collage\Provider;
 
-use Tzsk\Collage\MakeCollage;
 use Illuminate\Support\ServiceProvider;
+use Tzsk\Collage\Commands\PublishCollageConfig;
+use Tzsk\Collage\MakeCollage;
 
 class CollageServiceProvider extends ServiceProvider
 {
-    /**
-     * Perform booting of services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        /**
-         * Publish Config File.
-         */
-        $this->publishes([
-            __DIR__.'/../Config/collage.php' => config_path('collage.php')
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../../config/collage.php' => config_path('collage.php'),
+            ], 'collage-config');
+        }
 
-        /**
-         * Register singleton.
-         */
-        $this->app->singleton('tzsk-collage', function ($app) {
+        $this->app->bind('tzsk-collage', function () {
             return (new MakeCollage(config('collage.driver')))
                 ->with(config('collage.generators', []));
         });
+
+        $this->commands([
+            PublishCollageConfig::class,
+        ]);
     }
 
-    /**
-     * Register any package services.
-     *
-     * @return void
-     */
     public function register()
     {
-        // merge default config
-        $this->mergeConfigFrom(
-            __DIR__.'/../Config/collage.php',
-            'collage'
-        );
+        $this->mergeConfigFrom(__DIR__ . '/../../config/collage.php', 'collage');
     }
 }

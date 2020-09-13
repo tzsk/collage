@@ -4,8 +4,8 @@ namespace Tzsk\Collage;
 
 use Closure;
 use Exception;
-use Tzsk\Collage\Helpers\File;
 use Tzsk\Collage\Helpers\Config;
+use Tzsk\Collage\Helpers\File;
 
 class MakeCollage
 {

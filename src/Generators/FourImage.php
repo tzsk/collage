@@ -49,10 +49,10 @@ class FourImage extends CollageGenerator
         $this->canvas->insert($one->fit($width, floor($height)), 'top');
 
         $two = $this->images->get(1);
-        $this->canvas->insert($two->fit($width, floor($height)), 'top', 0, $this->file->getHeight() / 4);
+        $this->canvas->insert($two->fit($width, floor($height)), 'top', 0, intval($this->file->getHeight() / 4));
 
         $three = $this->images->get(2);
-        $this->canvas->insert($three->fit($width, floor($height)), 'top', 0, $this->file->getHeight() / 2);
+        $this->canvas->insert($three->fit($width, floor($height)), 'top', 0, intval($this->file->getHeight() / 2));
 
         $four = $this->images->get(3);
         $this->canvas->insert($four->fit($width, floor($height)), 'bottom');
@@ -70,10 +70,10 @@ class FourImage extends CollageGenerator
         $this->canvas->insert($one->fit(floor($width), $height), 'left');
 
         $two = $this->images->get(1);
-        $this->canvas->insert($two->fit(floor($width), $height), 'left', $this->file->getWidth() / 4);
+        $this->canvas->insert($two->fit(floor($width), $height), 'left', intval($this->file->getWidth() / 4));
 
         $three = $this->images->get(2);
-        $this->canvas->insert($three->fit(floor($width), $height), 'left', $this->file->getWidth() / 2);
+        $this->canvas->insert($three->fit(floor($width), $height), 'left', intval($this->file->getWidth() / 2));
 
         $four = $this->images->get(3);
         $this->canvas->insert($four->fit(floor($width), $height), 'right');

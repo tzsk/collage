@@ -3,14 +3,14 @@
 namespace Tzsk\Collage\Tests\Contracts;
 
 use Intervention\Image\Image;
-use Tzsk\Collage\Helpers\File;
-use Tzsk\Collage\Helpers\Config;
-use Tzsk\Collage\Tests\PhpTestCase;
 use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Contracts\CollageGenerator;
 use Tzsk\Collage\Exceptions\ImageCountException;
+use Tzsk\Collage\Helpers\Config;
+use Tzsk\Collage\Helpers\File;
+use Tzsk\Collage\Tests\TestCase;
 
-class CollageGeneratorTest extends PhpTestCase
+class CollageGeneratorTest extends TestCase
 {
     protected $generator;
 

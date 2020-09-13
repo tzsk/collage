@@ -3,9 +3,9 @@
 namespace Tzsk\Collage\Tests\Helpers;
 
 use Tzsk\Collage\Helpers\Config;
-use Tzsk\Collage\Tests\PhpTestCase;
+use Tzsk\Collage\Tests\TestCase;
 
-class ConfigTest extends PhpTestCase
+class ConfigTest extends TestCase
 {
     /**
      * @var Config

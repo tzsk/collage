@@ -53,9 +53,9 @@ class MakeCollage
      * @param int $width
      * @param null|int $height
      *
-     * @return self
+     * @return MakeCollage
      */
-    public function make($width, $height = null): self
+    public function make($width, $height = null)
     {
         $height = $height ? $height : $width;
         $this->file->setWidth($width);

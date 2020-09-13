@@ -1,0 +1,65 @@
+{
+    "name": "tzsk/collage",
+    "description": "Generate Image Collage with Laravel",
+    "keywords": [
+        "tzsk",
+        "collage",
+        "php collage",
+        "image collage php",
+        "create image collage laravel",
+        "laravel image collage"
+    ],
+    "homepage": "https://github.com/tzsk/collage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tzsk",
+            "email": "mailtokmahmed@gmail.com",
+            "homepage": "https://github.com/tzsk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "intervention/image": "^2.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "laravel/framework": "^7.0|^8.0",
+        "laravel/legacy-factories": "^1.0",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^9.3",
+        "vimeo/psalm": "^3.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tzsk\\Collage\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tzsk\\Collage\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tzsk\\Collage\\Provider\\CollageServiceProvider"
+            ],
+            "aliases": {
+                "Collage": "Tzsk\\Collage\\Facade\\Collage"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

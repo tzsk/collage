@@ -25,6 +25,7 @@ class OneImage extends CollageGenerator
 
         $this->createCanvas();
         $this->process();
+
         return $this->canvas->insert($this->images->first(), 'center');
     }
 

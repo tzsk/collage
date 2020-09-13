@@ -3,10 +3,10 @@
 namespace Tzsk\Collage\Tests\Generators;
 
 use Intervention\Image\Image;
-use Tzsk\Collage\Helpers\File;
-use Tzsk\Collage\Helpers\Config;
-use Tzsk\Collage\Generators\ThreeImage;
 use Tzsk\Collage\Exceptions\ImageCountException;
+use Tzsk\Collage\Generators\ThreeImage;
+use Tzsk\Collage\Helpers\Config;
+use Tzsk\Collage\Helpers\File;
 use Tzsk\Collage\Tests\TestCase;
 
 class ThreeImageTest extends TestCase

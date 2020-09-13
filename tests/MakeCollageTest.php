@@ -3,11 +3,9 @@
 namespace Tzsk\Collage\Tests;
 
 use Intervention\Image\Image;
-use Tzsk\Collage\MakeCollage;
-use Tzsk\Collage\Helpers\File;
-use Tzsk\Collage\Helpers\Config;
 use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Contracts\CollageGenerator;
+use Tzsk\Collage\MakeCollage;
 
 class MakeCollageTest extends TestCase
 {
@@ -82,11 +80,9 @@ class MakeCollageTest extends TestCase
             ImageManagerStatic::make('tests/images/image.jpg'),
             'https://i.picsum.photos/id/284/536/354.jpg?hmac=e8lLizGxaVIQy3ILytDAkWUwFvYLGAzDiqQU20owvHY',
             file_get_contents('tests/images/image.jpg'),
-            'tests/images/image.jpg'
+            'tests/images/image.jpg',
         ];
 
         $this->assertInstanceOf(Image::class, $this->collage->make(100)->from($images));
     }
 }
-
-

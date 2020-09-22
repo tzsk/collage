@@ -1604,16 +1604,16 @@
         },
         {
             "name": "laravel/legacy-factories",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/legacy-factories.git",
-                "reference": "57117fdf788520a04c99f86205155f2799271af9"
+                "reference": "8bedd3d537c7e648085cc8532701df1fa81ae012"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/legacy-factories/zipball/57117fdf788520a04c99f86205155f2799271af9",
-                "reference": "57117fdf788520a04c99f86205155f2799271af9",
+                "url": "https://api.github.com/repos/laravel/legacy-factories/zipball/8bedd3d537c7e648085cc8532701df1fa81ae012",
+                "reference": "8bedd3d537c7e648085cc8532701df1fa81ae012",
                 "shasum": ""
             },
             "require": {
@@ -1652,7 +1652,7 @@
             ],
             "description": "The legacy version of the Laravel Eloquent factories.",
             "homepage": "http://laravel.com",
-            "time": "2020-06-09T15:09:18+00:00"
+            "time": "2020-09-21T13:31:44+00:00"
         },
         {
             "name": "league/commonmark",

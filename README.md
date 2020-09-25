@@ -1,6 +1,7 @@
 # :gift: PHP Collage Maker
 
 ![Collage Cover Image](resources/collage.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftzsk%2Fcollage.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftzsk%2Fcollage?ref=badge_shield)
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/collage?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/collage.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/collage)
@@ -346,3 +347,6 @@ If you discover any security related issues, please email mailtokmahmed@gmail.co
 ## :policeman: License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftzsk%2Fcollage.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftzsk%2Fcollage?ref=badge_large)

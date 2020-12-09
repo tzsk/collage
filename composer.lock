@@ -2413,22 +2413,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.5.0",
+            "version": "v6.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "dc73c0415db859ea252b1633d8b269ffdd96e36d"
+                "reference": "9e59b54262d6c0aee0a3843d95e3930acad3120f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/dc73c0415db859ea252b1633d8b269ffdd96e36d",
-                "reference": "dc73c0415db859ea252b1633d8b269ffdd96e36d",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/9e59b54262d6c0aee0a3843d95e3930acad3120f",
+                "reference": "9e59b54262d6c0aee0a3843d95e3930acad3120f",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.0",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench-core": "^6.7",
+                "orchestra/testbench-core": "^6.8",
                 "php": ">=7.3 || >=8.0",
                 "phpunit/phpunit": "^8.4 || ^9.0"
             },
@@ -2469,20 +2469,20 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2020-12-01T11:28:02+00:00"
+            "time": "2020-12-09T14:38:58+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.7.0",
+            "version": "v6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "4f9fe7b3f901984c4e012fc29354ccc9eaf9e66f"
+                "reference": "7d038b444813cda4ffd637a2008aa487edb5afed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/4f9fe7b3f901984c4e012fc29354ccc9eaf9e66f",
-                "reference": "4f9fe7b3f901984c4e012fc29354ccc9eaf9e66f",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/7d038b444813cda4ffd637a2008aa487edb5afed",
+                "reference": "7d038b444813cda4ffd637a2008aa487edb5afed",
                 "shasum": ""
             },
             "require": {
@@ -2549,7 +2549,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2020-12-01T11:00:52+00:00"
+            "time": "2020-12-09T14:20:37+00:00"
         },
         {
             "name": "phar-io/manifest",

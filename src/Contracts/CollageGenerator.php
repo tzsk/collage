@@ -3,7 +3,6 @@
 namespace Tzsk\Collage\Contracts;
 
 use Closure;
-use Illuminate\Support\Collection;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManagerStatic;
 use Tzsk\Collage\Exceptions\ImageCountException;

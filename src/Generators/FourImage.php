@@ -45,16 +45,16 @@ class FourImage extends CollageGenerator
         $width = $this->file->getWidth() - $this->file->getPadding();
         $height = $this->file->getHeight() / 4 - $this->file->getPadding() * 0.75;
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, floor($height)), 'top');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, floor($height)), 'top', 0, intval($this->file->getHeight() / 4));
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, floor($height)), 'top', 0, intval($this->file->getHeight() / 2));
 
-        $four = $this->images->get(3);
+        $four = $this->images[3];
         $this->canvas->insert($four->fit($width, floor($height)), 'bottom');
     }
 
@@ -66,16 +66,16 @@ class FourImage extends CollageGenerator
         $width = $this->file->getWidth() / 4 - $this->file->getPadding() * 0.75;
         $height = $this->file->getHeight() - $this->file->getPadding();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit(floor($width), $height), 'left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit(floor($width), $height), 'left', intval($this->file->getWidth() / 4));
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit(floor($width), $height), 'left', intval($this->file->getWidth() / 2));
 
-        $four = $this->images->get(3);
+        $four = $this->images[3];
         $this->canvas->insert($four->fit(floor($width), $height), 'right');
     }
 
@@ -86,16 +86,16 @@ class FourImage extends CollageGenerator
     {
         list($width, $height) = $this->getSmallSize();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, $height), 'top-left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, $height), 'top-right');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, $height), 'bottom-left');
 
-        $four = $this->images->get(3);
+        $four = $this->images[3];
         $this->canvas->insert($four->fit($width, $height), 'bottom-right');
     }
 

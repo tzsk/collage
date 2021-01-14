@@ -117,7 +117,8 @@ class MakeCollage
         }
 
         $class = $this->config->getGenerator($count);
+        $instance = new $class($this->file, $this->config);
 
-        return with(new $class($this->file, $this->config))->create($closure);
+        return $instance->create($closure);
     }
 }

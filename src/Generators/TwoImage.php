@@ -51,8 +51,8 @@ class TwoImage extends CollageGenerator
     {
         $this->resizeVerticalImages();
 
-        $this->canvas->insert($this->images->get(0));
-        $this->canvas->insert($this->images->get(1), 'top-right');
+        $this->canvas->insert($this->images[0]);
+        $this->canvas->insert($this->images[1], 'top-right');
     }
 
     /**
@@ -62,8 +62,8 @@ class TwoImage extends CollageGenerator
     {
         $this->resizeHorizontalImages();
 
-        $this->canvas->insert($this->images->get(0));
-        $this->canvas->insert($this->images->get(1), 'bottom-left');
+        $this->canvas->insert($this->images[0]);
+        $this->canvas->insert($this->images[1], 'bottom-left');
     }
 
     /**
@@ -85,9 +85,9 @@ class TwoImage extends CollageGenerator
     {
         $height = $this->file->getHeight() / 2 - ceil($this->file->getPadding() * 0.75);
 
-        $images = collect();
+        $images = [];
         foreach ($this->images as $image) {
-            $images->push($image->fit($this->file->getWidth() - $this->file->getPadding(), $height));
+            $images[] = $image->fit($this->file->getWidth() - $this->file->getPadding(), $height);
         }
 
         $this->images = $images;
@@ -99,9 +99,9 @@ class TwoImage extends CollageGenerator
     protected function resizeVerticalImages()
     {
         $width = $this->file->getWidth() / 2 - ceil($this->file->getPadding() * 0.75);
-        $images = collect();
+        $images = [];
         foreach ($this->images as $image) {
-            $images->push($image->fit($width, $this->file->getHeight() - $this->file->getPadding()));
+            $images[] = $image->fit($width, $this->file->getHeight() - $this->file->getPadding());
         }
 
         $this->images = $images;

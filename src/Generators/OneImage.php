@@ -26,7 +26,7 @@ class OneImage extends CollageGenerator
         $this->createCanvas();
         $this->process();
 
-        return $this->canvas->insert($this->images->first(), 'center');
+        return $this->canvas->insert($this->images[0], 'center');
     }
 
     /**
@@ -49,6 +49,6 @@ class OneImage extends CollageGenerator
         $width = $this->file->getWidth() - $this->file->getPadding();
         $height = $this->file->getHeight() - $this->file->getPadding();
 
-        $this->images = collect([$this->images->first()->fit($width, $height)]);
+        $this->images = [[$this->images[0]->fit($width, $height)]];
     }
 }

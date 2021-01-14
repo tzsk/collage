@@ -18,7 +18,7 @@ abstract class CollageGenerator
     protected $file;
 
     /**
-     * @var Collection
+     * @var array
      */
     protected $images;
 
@@ -47,12 +47,12 @@ abstract class CollageGenerator
      */
     protected function transformFiles()
     {
-        $images = collect();
+        $images = [];
         foreach ($this->file->getFiles() as $file) {
             if ($file instanceof Image) {
-                $images->push($file);
+                $images[] = $file;
             } else {
-                $images->push(ImageManagerStatic::make($file));
+                $images[] = ImageManagerStatic::make($file);
             }
         }
 
@@ -66,7 +66,7 @@ abstract class CollageGenerator
      */
     protected function check($count)
     {
-        $files = $this->images->count();
+        $files = count($this->images);
         if ($files != $count) {
             $message = "Cannot create collage of {$count} image with {$files} image(s)";
 

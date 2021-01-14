@@ -44,13 +44,13 @@ class ThreeImage extends CollageGenerator
     {
         list($width, $height, $largeWidth) = $this->getWidthSize();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, $height), 'top-left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, $height), 'top-right');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($largeWidth, $height), 'bottom');
     }
 
@@ -61,13 +61,13 @@ class ThreeImage extends CollageGenerator
     {
         list($width, $height, $largeWidth) = $this->getWidthSize();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($largeWidth, $height), 'top');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, $height), 'bottom-left');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, $height), 'bottom-right');
     }
 
@@ -78,13 +78,13 @@ class ThreeImage extends CollageGenerator
     {
         list($width, $height, $largeHeight) = $this->getHeightSize();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, $height), 'top-left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, $largeHeight), 'right');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, $height), 'bottom-left');
     }
 
@@ -95,13 +95,13 @@ class ThreeImage extends CollageGenerator
     {
         list($width, $height, $largeHeight) = $this->getHeightSize();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, $largeHeight), 'left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, $height), 'top-right');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, $height), 'bottom-right');
     }
 
@@ -113,13 +113,13 @@ class ThreeImage extends CollageGenerator
         $width = $this->file->getWidth() - $this->file->getPadding();
         $height = $this->file->getHeight() / 3 - $this->file->getPadding() * 0.75;
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit($width, ceil($height)), 'top');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit($width, ceil($height)), 'center');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit($width, ceil($height)), 'bottom');
     }
 
@@ -131,13 +131,13 @@ class ThreeImage extends CollageGenerator
         $width = $this->file->getWidth() / 3 - $this->file->getPadding() * 0.75;
         $height = $this->file->getHeight() - $this->file->getPadding();
 
-        $one = $this->images->get(0);
+        $one = $this->images[0];
         $this->canvas->insert($one->fit(ceil($width), $height), 'left');
 
-        $two = $this->images->get(1);
+        $two = $this->images[1];
         $this->canvas->insert($two->fit(ceil($width), $height), 'center');
 
-        $three = $this->images->get(2);
+        $three = $this->images[2];
         $this->canvas->insert($three->fit(ceil($width), $height), 'right');
     }
 

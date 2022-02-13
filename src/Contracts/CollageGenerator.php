@@ -47,6 +47,7 @@ abstract class CollageGenerator
      */
     protected function transformFiles()
     {
+        /** @var \Illuminate\Support\Collection<int, Image> $images */
         $images = collect();
         foreach ($this->file->getFiles() as $file) {
             if ($file instanceof Image) {

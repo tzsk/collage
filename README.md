@@ -7,12 +7,11 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/collage/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/collage/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/collage.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/collage)
 
-
 Create Image Collage with ease now with PHP. This package uses [`intervention/image`](https://github.com/Intervention/image) package to leverage image manipulation.
 
 Using this package is very easy and creating Beautiful Collages are not tough anymore.
 
-> *NOTE:* Currently this package only supports 4 images. You can write your own generator to add 5 if you like.
+> _NOTE:_ Currently this package only supports 4 images. You can write your own generator to add 5 if you like.
 
 ## :package: Installation
 
@@ -242,9 +241,9 @@ The reaturned `$image` is the instance of `Intervention\Image\Image` object.
 
 You can do multiple things with it.
 
-- You can save the final collage.
-- You can just use it as a plain response.
-- You can crop/resize/colorize and more.
+-   You can save the final collage.
+-   You can just use it as a plain response.
+-   You can crop/resize/colorize and more.
 
 Read more about what you can do in the [Official Documentation](http://image.intervention.io/).
 
@@ -270,7 +269,7 @@ class FiveImage extends CollageGenerator
 }
 ```
 
-> NOTE: Take a look at `src/Contracts/CollageGenerator.php` for details about all the things you have access to in the generator class. Also, if you need a refrerence consider looking into: `src/Generators/FourImage.php`.
+> NOTE: Take a look at `src/Contracts/CollageGenerator.php` for details about all the things you have access to in the generator class. Also, if you need a reference consider looking into: `src/Generators/FourImage.php`.
 
 #### Extend outside laravel
 
@@ -322,7 +321,7 @@ There is a `generators` array which is currently empty. You can add your own gen
 
 ## :microscope: Testing
 
-``` bash
+```bash
 composer test
 ```
 
@@ -340,8 +339,8 @@ If you discover any security related issues, please email mailtokmahmed@gmail.co
 
 ## :crown: Credits
 
-- [Kazi Ahmed](https://github.com/tzsk)
-- [All Contributors](../../contributors)
+-   [Kazi Ahmed](https://github.com/tzsk)
+-   [All Contributors](../../contributors)
 
 ## :policeman: License
 

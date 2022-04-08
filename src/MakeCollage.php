@@ -57,7 +57,7 @@ class MakeCollage
      */
     public function make($width, $height = null)
     {
-        $height = $height ? $height : $width;
+        $height ??= $width;
         $this->file->setWidth($width);
         $this->file->setHeight($height);
 

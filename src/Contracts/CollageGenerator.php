@@ -24,9 +24,6 @@ abstract class CollageGenerator
 
     /**
      * CollageGenerator constructor.
-     *
-     * @param File $file
-     * @param Config $config
      */
     public function __construct(File $file, Config $config)
     {
@@ -36,8 +33,7 @@ abstract class CollageGenerator
     }
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return Image
      */
     abstract public function create($closure = null);
@@ -61,9 +57,10 @@ abstract class CollageGenerator
     }
 
     /**
-     * @param int $count
-     * @throws ImageCountException
+     * @param  int  $count
      * @return void
+     *
+     * @throws ImageCountException
      */
     protected function check($count)
     {

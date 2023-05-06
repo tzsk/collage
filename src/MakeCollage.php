@@ -39,7 +39,7 @@ class MakeCollage
     }
 
     /**
-     * @param array $generator
+     * @param  array  $generator
      * @return MakeCollage
      */
     public function with($generator)
@@ -50,9 +50,8 @@ class MakeCollage
     }
 
     /**
-     * @param int $width
-     * @param null|int $height
-     *
+     * @param  int  $width
+     * @param  null|int  $height
      * @return MakeCollage
      */
     public function make($width, $height = null)
@@ -65,8 +64,7 @@ class MakeCollage
     }
 
     /**
-     * @param string $color
-     *
+     * @param  string  $color
      * @return MakeCollage
      */
     public function background($color = null)
@@ -77,8 +75,7 @@ class MakeCollage
     }
 
     /**
-     * @param int $pixels
-     *
+     * @param  int  $pixels
      * @return MakeCollage
      */
     public function padding($pixels = 0)
@@ -89,10 +86,7 @@ class MakeCollage
     }
 
     /**
-     * @param array $files
-     *
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
      */
     public function from(array $files, $closure = null)
@@ -103,9 +97,9 @@ class MakeCollage
     }
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image|\Intervention\Image\ImageManagerStatic
+     *
      * @throws Exception
      */
     protected function generate($closure = null)

@@ -14,7 +14,7 @@ class MakeCollageTest extends TestCase
      */
     protected $collage;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->collage = new FakeMakeCollage();
     }
@@ -78,7 +78,7 @@ class MakeCollageTest extends TestCase
     {
         $images = [
             ImageManagerStatic::make('tests/images/image.jpg'),
-            'https://i.picsum.photos/id/284/536/354.jpg?hmac=e8lLizGxaVIQy3ILytDAkWUwFvYLGAzDiqQU20owvHY',
+            'https://fakeimg.pl/250x100/',
             file_get_contents('tests/images/image.jpg'),
             'tests/images/image.jpg',
         ];

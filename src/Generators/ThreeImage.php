@@ -15,8 +15,7 @@ class ThreeImage extends CollageGenerator
     protected $canvas;
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image
      */
     public function create($closure = null)
@@ -42,7 +41,7 @@ class ThreeImage extends CollageGenerator
      */
     public function twoTopOneBottom()
     {
-        list($width, $height, $largeWidth) = $this->getWidthSize();
+        [$width, $height, $largeWidth] = $this->getWidthSize();
 
         $one = $this->images->get(0);
         $this->canvas->insert($one->fit($width, $height), 'top-left');
@@ -59,7 +58,7 @@ class ThreeImage extends CollageGenerator
      */
     public function oneTopTwoBottom()
     {
-        list($width, $height, $largeWidth) = $this->getWidthSize();
+        [$width, $height, $largeWidth] = $this->getWidthSize();
 
         $one = $this->images->get(0);
         $this->canvas->insert($one->fit($largeWidth, $height), 'top');
@@ -76,7 +75,7 @@ class ThreeImage extends CollageGenerator
      */
     public function twoLeftOneRight()
     {
-        list($width, $height, $largeHeight) = $this->getHeightSize();
+        [$width, $height, $largeHeight] = $this->getHeightSize();
 
         $one = $this->images->get(0);
         $this->canvas->insert($one->fit($width, $height), 'top-left');
@@ -93,7 +92,7 @@ class ThreeImage extends CollageGenerator
      */
     public function oneLeftTwoRight()
     {
-        list($width, $height, $largeHeight) = $this->getHeightSize();
+        [$width, $height, $largeHeight] = $this->getHeightSize();
 
         $one = $this->images->get(0);
         $this->canvas->insert($one->fit($width, $largeHeight), 'left');
@@ -142,7 +141,7 @@ class ThreeImage extends CollageGenerator
     }
 
     /**
-     * @param Closure $closure
+     * @param  Closure  $closure
      */
     protected function makeSelection($closure = null)
     {
@@ -158,7 +157,7 @@ class ThreeImage extends CollageGenerator
      */
     protected function getWidthSize()
     {
-        list($width, $height) = $this->getSmallSize();
+        [$width, $height] = $this->getSmallSize();
         $largeWidth = $this->file->getWidth() - $this->file->getPadding();
 
         return [$width, $height, $largeWidth];
@@ -169,7 +168,7 @@ class ThreeImage extends CollageGenerator
      */
     protected function getHeightSize()
     {
-        list($width, $height) = $this->getSmallSize();
+        [$width, $height] = $this->getSmallSize();
         $largeHeight = $this->file->getHeight() - $this->file->getPadding();
 
         return [$width, $height, $largeHeight];

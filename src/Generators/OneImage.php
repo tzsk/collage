@@ -15,8 +15,7 @@ class OneImage extends CollageGenerator
     protected $canvas;
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image
      */
     public function create($closure = null)

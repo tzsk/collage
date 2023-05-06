@@ -15,8 +15,7 @@ class TwoImage extends CollageGenerator
     protected $canvas;
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image
      */
     public function create($closure = null)
@@ -67,7 +66,7 @@ class TwoImage extends CollageGenerator
     }
 
     /**
-     * @param Closure $closure
+     * @param  Closure  $closure
      */
     protected function makeSelection($closure = null)
     {

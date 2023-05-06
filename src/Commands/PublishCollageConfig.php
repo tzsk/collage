@@ -12,6 +12,6 @@ class PublishCollageConfig extends Command
 
     public function handle()
     {
-        $this->call('vendor:publish', ['--tag' => "collage-config"]);
+        $this->call('vendor:publish', ['--tag' => 'collage-config']);
     }
 }

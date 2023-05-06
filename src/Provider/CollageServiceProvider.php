@@ -12,7 +12,7 @@ class CollageServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/collage.php' => config_path('collage.php'),
+                __DIR__.'/../../config/collage.php' => config_path('collage.php'),
             ], 'collage-config');
         }
 
@@ -28,6 +28,6 @@ class CollageServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/collage.php', 'collage');
+        $this->mergeConfigFrom(__DIR__.'/../../config/collage.php', 'collage');
     }
 }

@@ -33,8 +33,7 @@ class Config
     }
 
     /**
-     * @param array $maps
-     *
+     * @param  array  $maps
      * @return Config
      */
     public function setClassMap($maps)
@@ -55,8 +54,7 @@ class Config
     }
 
     /**
-     * @param mixed $count
-     *
+     * @param  mixed  $count
      * @return bool
      */
     public function hasGeneratorFor($count)
@@ -73,8 +71,7 @@ class Config
     }
 
     /**
-     * @param mixed $index
-     *
+     * @param  mixed  $index
      * @return mixed
      */
     public function getGenerator($index)
@@ -83,7 +80,7 @@ class Config
     }
 
     /**
-     * @param string $driver
+     * @param  string  $driver
      * @return Config
      */
     public function setDriver($driver)

@@ -30,8 +30,7 @@ class File
     protected $files = [];
 
     /**
-     * @param int $width
-     *
+     * @param  int  $width
      * @return File
      */
     public function setWidth($width)
@@ -50,8 +49,7 @@ class File
     }
 
     /**
-     * @param int $height
-     *
+     * @param  int  $height
      * @return File
      */
     public function setHeight($height)
@@ -70,8 +68,7 @@ class File
     }
 
     /**
-     * @param array $files
-     *
+     * @param  array  $files
      * @return File
      */
     public function setFiles($files)
@@ -90,8 +87,7 @@ class File
     }
 
     /**
-     * @param int $padding
-     *
+     * @param  int  $padding
      * @return File
      */
     public function setPadding($padding)
@@ -110,8 +106,7 @@ class File
     }
 
     /**
-     * @param string $color
-     *
+     * @param  string  $color
      * @return File
      */
     public function setColor($color)

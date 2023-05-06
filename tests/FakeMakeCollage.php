@@ -28,7 +28,6 @@ class FakeMakeCollage extends MakeCollage
     }
 
     /**
-     * @param array $files
      * @return MakeCollage
      */
     public function setFiles(array $files)

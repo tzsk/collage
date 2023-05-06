@@ -18,7 +18,7 @@ class TwoImageTest extends TestCase
         'tests/images/image.jpg',
     ];
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->generator = new TwoImage($this->getFile(), new Config);
     }

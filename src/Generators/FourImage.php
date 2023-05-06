@@ -15,8 +15,7 @@ class FourImage extends CollageGenerator
     protected $canvas;
 
     /**
-     * @param Closure $closure
-     *
+     * @param  Closure  $closure
      * @return \Intervention\Image\Image
      */
     public function create($closure = null)
@@ -84,7 +83,7 @@ class FourImage extends CollageGenerator
      */
     public function grid()
     {
-        list($width, $height) = $this->getSmallSize();
+        [$width, $height] = $this->getSmallSize();
 
         $one = $this->images->get(0);
         $this->canvas->insert($one->fit($width, $height), 'top-left');
@@ -100,7 +99,7 @@ class FourImage extends CollageGenerator
     }
 
     /**
-     * @param Closure $closure
+     * @param  Closure  $closure
      */
     protected function makeSelection($closure = null)
     {

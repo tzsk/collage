@@ -14,7 +14,7 @@ class CollageGeneratorTest extends TestCase
 {
     protected $generator;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->generator = $generator = new FakeCollageGenerator(new File, new Config);
     }

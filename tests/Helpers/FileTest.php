@@ -12,7 +12,7 @@ class FileTest extends TestCase
      */
     protected $file;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->file = new File;
     }

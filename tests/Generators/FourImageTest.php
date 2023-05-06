@@ -20,7 +20,7 @@ class FourImageTest extends TestCase
         'tests/images/image.jpg',
     ];
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->generator = new FourImage($this->getFile(), new Config);
     }
